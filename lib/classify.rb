@@ -12,7 +12,6 @@ class Classify::Classify
   end
 
   def fraudulent?
-    binding.pry
     if check_details
       'Good'
     else
@@ -30,18 +29,18 @@ class Classify::Classify
     tmp = @imei
     nDigits = tmp.length
     sum = 0
-    parity = (nDigits-2) % 2 
+    parity = (nDigits-2) % 2
     0.upto(nDigits -1) do |i|
         digit = tmp[i].to_i
-        if i % 2 == parity 
-            digit = digit * 2 
+        if i % 2 == parity
+            digit = digit * 2
         end
-        if digit > 9 
-            digit = digit - 9 
+        if digit > 9
+            digit = digit - 9
         end
-        sum = sum + digit 
+        sum = sum + digit
     end
-    ((sum % 10) == 0) 
+    ((sum % 10) == 0)
   end
 
   def check_expiry
